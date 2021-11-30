@@ -6,25 +6,30 @@ public class runmain {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String h;
-        int s =1;
+        int s =0,cnt=0,ex=1;
         System.out.println("Nhap chuoi s : ");
         h= sc.nextLine();
         for (int i=0 ; i<h.length(); i++)
         {
-            if (h.charAt(i)>=49 && h.charAt(i)<=57) {
-                //System.out.println(h.charAt(i));
-                if (h.charAt(i) - 49 == 4)
-                    s *= 2;
-                if (h.charAt(i) - 49 == 6)
-                    s *= 3;
-                if (h.charAt(i) - 49 == 8)
-                    s *= 4;
-                if (h.charAt(i) - 49 == 9)
-                    s *= 3;
+            if (Character.isDigit(h.charAt(i))){
+                cnt++;
+                s+= h.charAt(i)-48;
             }
         }
-        System.out.println("Chiều dai chuỗi : "+h.length());
-        System.out.println("Tích ước chữ số : "+s);
+        System.out.println("Chuỗi có : "+cnt+" chữ số");
+        for (int i=0; i<h.length(); i++)
+        {
+            if (Character.getNumericValue(h.charAt(i))>0)
+            {
+                if (h.charAt(i)-48>0){
+                    if (s% (h.charAt(i)-48)==0)
+                    {
+                        ex *= (h.charAt(i) - 48);
+                    }
+                }
+            }
+        }
+        System.out.println("Tích : "+ex);
 
 
     }
